@@ -55,10 +55,8 @@ button {
   background-color: transparent;
   outline: none;
   border: none;
-  color: #f1f5f9;
-}
-.btn-img {
   font-size: 25px;
+  color: #f1f5f9;
 }
 
 .ta {

@@ -46,7 +46,7 @@ class App extends Component {
                 className={`${b && 'bt'}`}
                 onClick={this.onB}
               >
-                <VscBold size={25} className="btn-img" />
+                <VscBold size={25} />
               </button>
             </li>
             <li>
@@ -56,7 +56,7 @@ class App extends Component {
                 className={`${i && 'it'}`}
                 onClick={this.onI}
               >
-                <GoItalic size={25} className="btn-img" />
+                <GoItalic size={25} />
               </button>
             </li>
             <li>
@@ -66,7 +66,7 @@ class App extends Component {
                 className={`${u && 'ut'}`}
                 onClick={this.onU}
               >
-                <AiOutlineUnderline size={25} className="btn-img" />
+                <AiOutlineUnderline size={25} />
               </button>
             </li>
           </ul>
