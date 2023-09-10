@@ -2,84 +2,88 @@ import {Component} from 'react'
 import {VscBold} from 'react-icons/vsc'
 import {GoItalic} from 'react-icons/go'
 import {AiOutlineUnderline} from 'react-icons/ai'
-
-import './App.css'
+import {
+  MainDiv,
+  CardDiv,
+  LeftDiv,
+  LeftH1,
+  LeftImg,
+  RightDiv,
+  ToolUl,
+  ToolLi,
+  Button,
+  TextArea,
+} from './styledComponents'
 
 class App extends Component {
-  state = {text: '', b: false, i: false, u: false}
+  state = {isBold: false, isItalic: false, isUnderline: false}
 
-  onText = e => {
-    this.setState({text: e.target.value})
+  onClickBold = () => {
+    this.setState(prevState => ({isBold: !prevState.isBold}))
   }
 
-  onB = () => {
-    this.setState(prevState => ({b: !prevState.b}))
+  onClickItalic = () => {
+    this.setState(prevState => ({isItalic: !prevState.isItalic}))
   }
 
-  onI = () => {
-    this.setState(prevState => ({i: !prevState.i}))
-  }
-
-  onU = () => {
-    this.setState(prevState => ({u: !prevState.u}))
+  onClickUnderline = () => {
+    this.setState(prevState => ({isUnderline: !prevState.isUnderline}))
   }
 
   render() {
-    const {text, b, i, u} = this.state
-
+    const {isBold, isItalic, isUnderline} = this.state
+    const boldLogo = isBold ? '#faff00' : '#f1f5f9'
+    const italicLogo = isItalic ? '#faff00' : '#f1f5f9'
+    const underlineLogo = isUnderline ? '#faff00' : '#f1f5f9'
     return (
-      <div className="main-container">
-        <div className="b1">
-          <h1 className="title">Text Editor</h1>
-          <img
-            className="web-img"
-            src="https://assets.ccbp.in/frontend/react-js/text-editor-img.png"
-            alt="text editor"
-          />
-        </div>
-        <div className="b2">
-          <ul className="btn-box">
-            <li>
-              <button
-                type="button"
-                data-testid="bold"
-                className={`${b && 'bt'}`}
-                onClick={this.onB}
-              >
-                <VscBold size={25} />
-              </button>
-            </li>
-            <li>
-              <button
-                type="button"
-                data-testid="italic"
-                className={`${i && 'it'}`}
-                onClick={this.onI}
-              >
-                <GoItalic size={25} />
-              </button>
-            </li>
-            <li>
-              <button
-                type="button"
-                data-testid="underline"
-                className={`${u && 'ut'}`}
-                onClick={this.onU}
-              >
-                <AiOutlineUnderline size={25} />
-              </button>
-            </li>
-          </ul>
-          <textarea
-            className={`ta ${b && 'tb'} ${i && 'ti'} ${u && 'tu'}`}
-            value={text}
-            onChange={this.onText}
-            rows="30"
-          />
-        </div>
-      </div>
+      <MainDiv>
+        <CardDiv>
+          <LeftDiv>
+            <LeftH1>Text Editor</LeftH1>
+            <LeftImg
+              src="https://assets.ccbp.in/frontend/react-js/text-editor-img.png"
+              alt="text editor"
+            />
+          </LeftDiv>
+          <RightDiv>
+            <ToolUl>
+              <ToolLi>
+                <Button
+                  data-testid="bold"
+                  colorText={boldLogo}
+                  onClick={this.onClickBold}
+                >
+                  <VscBold size={25} />
+                </Button>
+              </ToolLi>
+              <ToolLi>
+                <Button
+                  data-testid="italic"
+                  colorText={italicLogo}
+                  onClick={this.onClickItalic}
+                >
+                  <GoItalic size={25} />
+                </Button>
+              </ToolLi>
+              <ToolLi>
+                <Button
+                  data-testid="underline"
+                  colorText={underlineLogo}
+                  onClick={this.onClickUnderline}
+                >
+                  <AiOutlineUnderline size={25} />
+                </Button>
+              </ToolLi>
+            </ToolUl>
+            <TextArea
+              isBold={isBold}
+              isUnderline={isUnderline}
+              isItalic={isItalic}
+            />
+          </RightDiv>
+        </CardDiv>
+      </MainDiv>
     )
   }
 }
-
 export default App
